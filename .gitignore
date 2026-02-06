@@ -1,0 +1,31 @@
+# Node modules & Logs
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build Output (Electron & Vite)
+dist/
+release/
+build/
+
+# Python Cache & Environment
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# VS Code Settings
+.vscode/
+
+# === PENTING: JANGAN UPLOAD FILE INI ===
+# Engine EXE (Terlalu besar untuk GitHub gratisan)
+engine.exe
+engine.spec
+
+# Model AI Cache (Otomatis download ulang nanti)
+*.u2net

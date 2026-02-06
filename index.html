@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MagicTool Desktop</title>
+    
+    <style>
+      /* Reset dasar agar tampilan rapi sebelum CSS utama dimuat */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f8fafc; /* Sama dengan bg-gray-50 */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overflow: hidden; /* Mencegah scroll saat loading */
+      }
+
+      /* Container Tengah */
+      .app-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      /* Logo Box */
+      .loader-logo-box {
+        width: 72px;
+        height: 72px;
+        background-color: #4f46e5; /* Indigo-600 */
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3);
+        margin-bottom: 24px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* SVG Icon (Sparkles) */
+      .loader-icon {
+        color: white;
+        width: 36px;
+        height: 36px;
+      }
+
+      /* Teks Brand */
+      .loader-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: #1e293b; /* Slate-800 */
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+
+      /* Teks Status */
+      .loader-status {
+        font-size: 13px;
+        font-weight: 500;
+        color: #64748b; /* Slate-500 */
+        margin-bottom: 32px;
+      }
+
+      /* Progress Bar Container */
+      .progress-container {
+        width: 180px;
+        height: 4px;
+        background-color: #e2e8f0; /* Slate-200 */
+        border-radius: 999px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Progress Bar Animasi */
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 40%;
+        background-color: #4f46e5;
+        border-radius: 999px;
+        animation: loading 1.5s infinite ease-in-out;
+      }
+
+      /* Animasi Mengambang */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+
+      /* Animasi Loading Bar */
+      @keyframes loading {
+        0% { left: -40%; }
+        50% { left: 40%; width: 60%; }
+        100% { left: 100%; width: 40%; }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div id="root">
+      <div class="app-loader">
+        <div class="loader-logo-box">
+          <svg class="loader-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+          </svg>
+        </div>
+
+        <div class="loader-title">MagicTool</div>
+        <div class="loader-status">Memuat Editor...</div>
+
+        <div class="progress-container">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
