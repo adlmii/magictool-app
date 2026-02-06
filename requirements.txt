@@ -1,0 +1,5 @@
+# Library untuk pengolahan gambar dasar (Resize, Convert format)
+Pillow>=10.0.0
+
+# Library AI untuk hapus background (versi CPU agar kompatibel di semua laptop)
+rembg[cpu]>=2.0.50
