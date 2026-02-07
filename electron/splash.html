@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .app-loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-logo-box {
+      width: 72px;
+      height: 72px;
+      background-color: #4f46e5;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3);
+      margin-bottom: 24px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .loader-icon {
+      color: white;
+      width: 36px;
+      height: 36px;
+    }
+
+    .loader-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .loader-status {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+
+    .progress-container {
+      width: 180px;
+      height: 4px;
+      background-color: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40%;
+      background-color: #4f46e5;
+      border-radius: 999px;
+      animation: loading 1.5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes loading {
+      0% { left: -40%; }
+      50% { left: 40%; width: 60%; }
+      100% { left: 100%; width: 40%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-loader">
+    <div class="loader-logo-box">
+      <svg class="loader-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+      </svg>
+    </div>
+
+    <div class="loader-title">MagicTool</div>
+    <div class="loader-status">Memuat editor...</div>
+
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+</body>
+</html>
