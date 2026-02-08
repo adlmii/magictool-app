@@ -1,5 +1,11 @@
-# Library untuk pengolahan gambar dasar (Resize, Convert format)
+# Library untuk pengolahan gambar dasar
 Pillow>=10.0.0
 
-# Library AI untuk hapus background (versi CPU agar kompatibel di semua laptop)
+# Library AI untuk hapus background (versi CPU)
 rembg[cpu]>=2.0.50
+
+# Library Computer Vision (Wajib versi 'contrib' untuk fitur Super Resolution)
+opencv-contrib-python>=4.8.0
+
+# Untuk download model AI otomatis
+requests

@@ -60,7 +60,7 @@ function createMainWindow() {
   mainWindow.webContents.openDevTools();
 } else {
   mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 }
 
   mainWindow.once('ready-to-show', () => {
@@ -162,7 +162,7 @@ ipcMain.handle('window-close', () => {
 
 ipcMain.handle('process-image', async (event, args) => {
   return new Promise((resolve, reject) => {
-    const { command, inputPath, targetFormat } = args;
+    const { command, inputPath, targetFormat, scale, keepSize } = args;
 
     if (!fs.existsSync(APP_TEMP_DIR)) {
       fs.mkdirSync(APP_TEMP_DIR, { recursive: true });
@@ -177,26 +177,27 @@ ipcMain.handle('process-image', async (event, args) => {
     let finalArgs;
 
     if (app.isPackaged) {
-      // Mode installer
       executablePath = path.join(process.resourcesPath, 'engine.exe');
       finalArgs = [command, inputPath, outputPath];
-
-      if (!fs.existsSync(executablePath)) {
-        const msg = `Engine tidak ditemukan:\n${executablePath}`;
-        dialog.showErrorBox("Engine Missing", msg);
-        return reject({ success: false, log: msg });
-      }
     } else {
-      // Mode dev
       executablePath = 'python';
       const scriptPath = path.join(__dirname, '../python/main.py');
       finalArgs = [scriptPath, command, inputPath, outputPath];
     }
 
+    if (scale) {
+        finalArgs.push('--scale');
+        finalArgs.push(scale.toString());
+    }
+
+    if (keepSize) {
+        finalArgs.push('--keep_original');
+    }
+
     console.log(`🚀 Spawning: ${executablePath}`);
     console.log(`   Args: ${finalArgs}`);
 
-    const pythonProcess = spawn(executablePath, finalArgs);
+    const pythonProcess = spawn(executablePath, finalArgs, { windowsHide: true });
     let errorLog = '';
 
     pythonProcess.stderr.on('data', (data) => {

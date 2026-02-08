@@ -3,6 +3,7 @@ import MainLayout from './components/MainLayout';
 import ConvertPage from './pages/ConvertPage';
 import RemoveBgPage from './pages/RemoveBgPage';
 import Toast from './components/Toast';
+import UpscalePage from './pages/UpscalePage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('convert');
@@ -22,13 +23,20 @@ function App() {
         }}
         isProcessActive={isProcessActive}
       >
-        {activeTab === 'convert' ? (
+        {activeTab === 'convert' && (
           <ConvertPage 
             setProcessActive={setProcessActive} 
             showToast={showToast} 
           />
-        ) : (
+        )}
+        {activeTab === 'remove_bg' && (
           <RemoveBgPage 
+            setProcessActive={setProcessActive} 
+            showToast={showToast} 
+          />
+        )}
+        {activeTab === 'upscale' && (
+          <UpscalePage 
             setProcessActive={setProcessActive} 
             showToast={showToast} 
           />

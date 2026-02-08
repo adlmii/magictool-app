@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image as ImageIcon, Scissors, Menu, Command, Sparkles } from 'lucide-react';
+import { Image as ImageIcon, Scissors, Menu, Command, Sparkles, Wand2 } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -18,6 +18,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   const menus = [
     { id: 'convert', label: 'Convert Format', icon: ImageIcon },
     { id: 'remove_bg', label: 'Remove Background', icon: Scissors },
+    { id: 'upscale', label: 'Enhancer', icon: Sparkles }, 
   ];
 
   return (
@@ -28,8 +29,6 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
       
       {/* === HEADER === */}
       <div className="h-16 flex items-center px-3 mb-1">
-        
-        {/* Toggle Button */}
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-indigo-600 transition-all cursor-pointer shrink-0"
@@ -37,10 +36,9 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           <Menu size={20} strokeWidth={2.5} />
         </button>
 
-        {/* Brand */}
         <div className={`flex items-center gap-2.5 ml-2 overflow-hidden whitespace-nowrap transition-all duration-300 ${isCollapsed ? 'w-0 opacity-0 -translate-x-2' : 'w-auto opacity-100 translate-x-0'}`}>
           <div className="w-7 h-7 bg-indigo-600 rounded-md flex items-center justify-center text-white shadow-sm shrink-0">
-            <Sparkles size={16} fill="currentColor" />
+            <Wand2 size={16} fill="currentColor" />
           </div>
           
           <div className="flex flex-col justify-center">
@@ -92,7 +90,6 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                 {menu.label}
               </span>
 
-              {/* Tooltip */}
               {isCollapsed && isHovered === menu.id && (
                 <div className="absolute left-12 px-2.5 py-1.5 bg-gray-800 text-white text-[12px] font-medium rounded shadow-xl whitespace-nowrap z-50 animate-in fade-in slide-in-from-left-2 pointer-events-none">
                   {menu.label}

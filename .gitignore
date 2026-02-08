@@ -2,6 +2,7 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+.env
 
 # Build Output (Electron & Vite)
 dist/
@@ -14,6 +15,9 @@ __pycache__/
 .venv/
 env/
 venv/
+Lib/
+Scripts/
+pyvenv.cfg
 
 # System Files
 .DS_Store
@@ -22,10 +26,16 @@ Thumbs.db
 # VS Code Settings
 .vscode/
 
-# === PENTING: JANGAN UPLOAD FILE INI ===
-# Engine EXE (Terlalu besar untuk GitHub gratisan)
+# === ENGINE & MODEL AI ===
 engine.exe
-engine.spec
+*.spec
 
-# Model AI Cache (Otomatis download ulang nanti)
+# Folder Temporary Aplikasi
+magictool_temp/
+
+# === MODEL AI ===
+python/models/
 *.u2net
+*.pth
+*.pb
+*.onnx
