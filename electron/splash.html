@@ -2,103 +2,168 @@
 <html>
 <head>
   <meta charset="UTF-8" />
+  <title>MagicTool Splash</title>
   <style>
+    /* === RESET & FONT === */
+    :root {
+      --primary: #4f46e5; /* Indigo-600 */
+      --primary-soft: #e0e7ff; /* Indigo-100 */
+      --text-main: #0f172a; /* Slate-900 */
+      --text-muted: #64748b; /* Slate-500 */
+      --bg-color: #ffffff;
+    }
+
     body {
       margin: 0;
-      background-color: #f8fafc;
+      padding: 0;
+      background-color: var(--bg-color);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      overflow: hidden;
+      user-select: none;
+      cursor: wait;
     }
 
-    .app-loader {
+    .splash-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 280px;
+      animation: fadeIn 0.6s ease-out;
     }
 
-    .loader-logo-box {
-      width: 72px;
-      height: 72px;
-      background-color: #4f46e5;
-      border-radius: 18px;
+    /* === LOGO AREA === */
+    .logo-box {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3);
-      margin-bottom: 24px;
-      animation: float 3s ease-in-out infinite;
+      box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+      margin-bottom: 20px;
+      position: relative;
     }
 
-    .loader-icon {
+    /* Efek Kilau di Logo */
+    .logo-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo-icon {
       color: white;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
+      animation: pulse 3s infinite ease-in-out;
     }
 
-    .loader-title {
-      font-size: 20px;
+    /* === TYPOGRAPHY === */
+    .app-title {
+      font-size: 24px;
       font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 8px;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 6px;
     }
 
-    .loader-status {
-      font-size: 13px;
-      font-weight: 500;
-      color: #64748b;
-      margin-bottom: 28px;
+    .app-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: 99px;
     }
 
-    .progress-container {
-      width: 180px;
+    /* === PROGRESS BAR === */
+    .progress-track {
+      width: 100%;
       height: 4px;
-      background-color: #e2e8f0;
-      border-radius: 999px;
+      background-color: #f1f5f9; /* Slate-100 */
+      border-radius: 99px;
       overflow: hidden;
       position: relative;
     }
 
-    .progress-bar {
+    .progress-fill {
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
-      width: 40%;
-      background-color: #4f46e5;
-      border-radius: 999px;
-      animation: loading 1.5s infinite ease-in-out;
+      width: 30%;
+      background-color: var(--primary);
+      border-radius: 99px;
+      animation: loading 2s infinite ease-in-out;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    .status-text {
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      opacity: 0.8;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.9; }
     }
 
     @keyframes loading {
-      0% { left: -40%; }
-      50% { left: 40%; width: 60%; }
-      100% { left: 100%; width: 40%; }
+      0% { left: -30%; width: 30%; }
+      50% { left: 20%; width: 60%; }
+      100% { left: 100%; width: 30%; }
     }
   </style>
 </head>
 <body>
-  <div class="app-loader">
-    <div class="loader-logo-box">
-      <svg class="loader-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+  
+  <div class="splash-container">
+    <div class="logo-box">
+      <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"/>
+        <path d="m14 7 3 3"/>
+        <path d="M5 6v4"/>
+        <path d="M19 14v4"/>
+        <path d="M10 2v2"/>
+        <path d="M7 8H3"/>
+        <path d="M21 16h-4"/>
+        <path d="M11 3H9"/>
       </svg>
     </div>
 
-    <div class="loader-title">MagicTool</div>
-    <div class="loader-status">Memuat editor...</div>
+    <div class="app-title">MagicTool</div>
+    <div class="app-subtitle">Pro Editor</div>
 
-    <div class="progress-container">
-      <div class="progress-bar"></div>
+    <div class="progress-track">
+      <div class="progress-fill"></div>
     </div>
+
+    <div class="status-text">Memuat Engine AI...</div>
   </div>
+
 </body>
 </html>
